@@ -54,7 +54,7 @@ struct account_details
 {
   char name[20];
   char address[100];
-  char email[20];
+  char email[50];
   char account_no[15];
   long long balance;
   char mobile_no[10];
@@ -74,7 +74,7 @@ void add_account()
 
   char name[20];
   char address[100];
-  char email[20];
+  char email[50];
   char mobile_no[10];
   char account_no[15]="319301023";
   long long balance;
@@ -166,6 +166,7 @@ printf("\nEnter opening balance :- %ld",balance);
   FILE *file=fopen("account_details.csv","a+");
   fprintf(file,"%s,%s,%s,%s,%s,%ld\n",name,address,email,mobile_no,account_no,balance);
   fclose(file);
+head=NULL;
   fetch();
   int z;
   printf("\n\n--->Enter 1 to add another account \nEnter 2 to reach main menu \nEnter '0' to exit\n :--> ");
@@ -203,7 +204,7 @@ int i=0;
       j=1;
 
       if(i==0)
-      {printf("first line : %d\n",i);
+      {
         FILE *file=fopen("account_details.csv","w+");
         fprintf(file,"%s,%s,%s,%s,%s,%ld\n",head2->name,head2->address,head2->email,head2->mobile_no,head2->account_no,head2->balance);
         fclose(file);
@@ -212,7 +213,7 @@ int i=0;
         {break;}
       }
       else
-      {printf("second line : %d\n",i);
+      {
         FILE *file=fopen("account_details.csv","a");
         fprintf(file,"%s,%s,%s,%s,%s,%ld\n",head2->name,head2->address,head2->email,head2->mobile_no,head2->account_no,head2->balance);
         fclose(file);
@@ -229,6 +230,7 @@ int i=0;
     fclose(file);
   }
 int z;
+head=NULL;
 fetch();
   printf("\n\n--->Enter 1 to remove another account \n--->>Enter 2 to reach main menu \n--->>Enter '0' to exit\n :--> ");
   scanf("%d",&z);
@@ -324,8 +326,8 @@ void view_details()
   printf("%s\t",head2->name);
   printf("%s\t",head2->address);
   printf("%s\t",head2->mobile_no);
-  printf("%s\t",head2->email);
-  printf("        %s\t",head2->account_no);
+  printf("        %s\t",head2->email);
+  printf("%s\t",head2->account_no);
   printf("%lu\t\n",head2->balance);
   printf("************************************************************************\n");
   head2=head2->next;
@@ -348,7 +350,7 @@ void withdrawal()
   int i=0;
   struct account_details **head1=&head;
   struct account_details *head2=*head1;
-  printf("Enter account number forr which you want to make withdrawal entry: ");
+  printf("Enter account number for which you want to make withdrawal entry: ");
   scanf("%s",account_no);
   while(head2!=NULL)
   {
