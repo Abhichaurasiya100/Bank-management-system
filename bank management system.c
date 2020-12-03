@@ -57,7 +57,7 @@ struct account_details
   char email[50];
   char account_no[15];
   long long balance;
-  char mobile_no[10];
+  char mobile_no[15];
   struct account_details * next;
 }*account_details;
 struct account_details * head=NULL;
@@ -75,9 +75,10 @@ void add_account()
   char name[20];
   char address[100];
   char email[50];
-  char mobile_no[10];
+  char mobile_no[15];
   char account_no[15]="319301023";
   long long balance;
+  char x[1];
    int postfix;
   char end[5];
   int j=0,i=0;
@@ -143,17 +144,22 @@ head2=head2->next;
         }
     }
 
+printf("");
+gets(x);
+    printf("\nEnter name: ");
+    gets(name);
 
-  printf("Enter name :-  ");
-  scanf("%s",name);
-  printf("\nEnter address :-  ");
-  scanf("%s",address);
-  printf("\nEnter email ID :-  ");
-  scanf("%s",email);
-  printf("\nEnter mobile number :-  ");
-  scanf("%s",mobile_no);
-  printf("\nEnter opening balance :-  ");
-  scanf("%ld",&balance);
+    printf("\nEnter address :-  ");
+    gets(address);
+
+    printf("\nEnter email ID :-  ");
+    gets(email);
+
+    printf("\nEnter mobile number :-  ");
+    gets(mobile_no);
+
+    printf("\nEnter opening balance :-  ");
+    scanf("%ld",&balance);
 
 printf("\n\n--->The below account is added");
 
@@ -319,17 +325,17 @@ void view_details()
 {
   struct account_details **head1=&head;
   struct account_details *head2=*head1;
-  printf("Name\tAddress\tMobile No.\tEmail ID\tAccount No.\tBalance\n");
+  printf("Name\tAddress\tMobile No.\tEmail ID\t\t\tAccount No.\tBalance\n");
 
   while(head2!=NULL){
-    printf("************************************************************************\n");
+    printf("****************************************************************************************\n");
   printf("%s\t",head2->name);
   printf("%s\t",head2->address);
   printf("%s\t",head2->mobile_no);
-  printf("        %s\t",head2->email);
+  printf("%s\t",head2->email);
   printf("%s\t",head2->account_no);
   printf("%lu\t\n",head2->balance);
-  printf("************************************************************************\n");
+  printf("****************************************************************************************\n");
   head2=head2->next;
 }
 int z;
